@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center">武将ストーリー入力フォーム</h2>
-                        <form method="post" th:action="@{/busyo_history/input}" th:object="${profile}">
+                        <form method="post" th:action="@{/busyo_story/{id}(id=${id})}" th:object="${profile}">
                             <div class="form-group">
                                 <label for="name">名前</label>
                                 <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="名前を入力してください">
@@ -36,6 +36,10 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">武将IN令和版夢小説を生成</button>
                             </div>
+							hide
+							onclick()
+<!--							JAVAスクリプトでPOSTメソッドを呼ぶ-->
+<!--							ダイアラグを呼び、くるくる画面を表示-->
                         </form>
                     </div>
                 </div>

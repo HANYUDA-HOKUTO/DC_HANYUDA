@@ -112,7 +112,7 @@
                 <td th:text="${person.age}">Age</td>
                 <td th:text="${person.address}">Address</td>
                 <td>
-                    <form method="post" th:action="@{/busyo_history/{id}(id=${person.id})}">
+                    <form method="post" th:action="@{/person_input/{id}(id=${person.id})}">
                         <button type="submit" class="story-button">武将ストーリー</button>
                     </form>
                 </td>

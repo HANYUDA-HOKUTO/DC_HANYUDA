@@ -199,21 +199,23 @@ public class MyController {
 	}
 	
 	
-	@PostMapping("/busyo_history/{id}")
+	@PostMapping("/person_input/{id}")
 	 public String getbusyo_history(@PathVariable int id, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("profile", new Profile());
+		Person person = new Person();
+		person.setId(id); // idをセット
+		model.addAttribute("id", id);
+		model.addAttribute("profile", person);
         return "myprofile_input"; // assuming the name of your input form is busyo_history_input_form.html
     }
 	
-	@PostMapping("/busyo_history/input")
-	public String postbusyo_history(@ModelAttribute Person profile, Model model) {
+	@PostMapping("/busyo_story/{id}")
+	public String postbusyo_history(@PathVariable int id, @ModelAttribute Person person, Model model) {
 		
 		ChatGptApiClient client = new ChatGptApiClient();
 		try {
-//			Optional<Person> opt1 = jpadao.findById(id);
-//			Person s1 = opt1.get();
-			String responseMessage = client.callChatGptApi(profile);
+			Optional<Person> opt1 = jpadao.findById(id);
+			Person s1 = opt1.get();
+			String responseMessage = client.callChatGptApi(s1,person);
 			model.addAttribute("history", responseMessage);
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック

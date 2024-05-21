@@ -31,6 +31,12 @@ public class Person {
     @NotBlank(message = "居城地を入力して下さい!!")
     private String address;
     
+    @NotBlank(message = "職業を入力して下さい!!")
+    private String profession = "IT";
+    
+    @NotBlank(message = "趣味を入力して下さい!!")
+    private String hobby = "game";
+    
     @Override
     public String toString() {
     	return "Person[id="+id+",name="+name+",age="+age+",address="+address+"]";
@@ -41,6 +47,15 @@ public class Person {
 		this.name = name;
 		this.age = age;
 		this.address = address;
+	}
+	
+	public Person(String name, int age, String address, String profession, String hobby) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.profession = profession;
+		this.hobby = hobby;
 	}
 
 }

@@ -13,7 +13,6 @@ import org.json.JSONObject;
 public class ChatGptApiClient {
 
 
-
 //    public static void main(String[] args) {
 //        try {
 //            String responseMessage = callChatGptApi();
@@ -23,9 +22,10 @@ public class ChatGptApiClient {
 //        }
 //    }
 
-    public static String callChatGptApi(Person person) throws Exception {
+    public static String callChatGptApi(Person person, Person person2) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        String prompt = "次の武将が2024年に生きていたらやりそうな事を教えて下さい。\n"+person.getName()+"\n";
+        String prompt = "次の武将が2024年に生きていたらやりそうな事を教えて下さい。\n"+person.getName()+"\n"
+        +"次の人がこの武将と会話した時の様子を教えて下さい。\n"+person2.getName()+"さん。"+person.getAge()+"歳。趣味は"+person.getHobby();
         JSONArray messages = new JSONArray();
         messages.put(new JSONObject().put("role", "system").put("content", "You are a helpful assistant."));
         messages.put(new JSONObject().put("role", "user").put("content", prompt));
@@ -34,7 +34,7 @@ public class ChatGptApiClient {
         requestBody.put("model", "gpt-3.5-turbo");
         requestBody.put("messages", messages);
         requestBody.put("temperature", 1.0);
-        requestBody.put("max_tokens", 512);
+        requestBody.put("max_tokens", 1024);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_URL))
