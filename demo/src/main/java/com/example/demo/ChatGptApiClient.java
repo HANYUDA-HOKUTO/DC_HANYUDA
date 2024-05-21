@@ -21,7 +21,7 @@ public class ChatGptApiClient {
 //            e.printStackTrace();
 //        }
 //    }
-
+//	Git.iginoreにAPIを登録する方法明日聞く!!
     public String callChatGptApi(Person person, Person person2) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         String prompt = "次の武将が2024年に生きていたらやりそうな事を教えて下さい。\n"+person.getName()+"\n"
@@ -38,9 +38,9 @@ public class ChatGptApiClient {
         requestBody.put("max_tokens", 1024);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL))
+                .uri(URI.create(ChatGptApiConst.API_URL))
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + API_KEY)
+                .header("Authorization", "Bearer " + ChatGptApiConst.API_KEY)
                 .POST(BodyPublishers.ofString(requestBody.toString(), StandardCharsets.UTF_8))
                 .build();
 
@@ -72,9 +72,9 @@ public class ChatGptApiClient {
         requestBody.put("max_tokens", 1024);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL))
+                .uri(URI.create(ChatGptApiConst.API_URL))
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + API_KEY)
+                .header("Authorization", "Bearer " + ChatGptApiConst.API_KEY)
                 .POST(BodyPublishers.ofString(requestBody.toString(), StandardCharsets.UTF_8))
                 .build();
 
