@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JPA</title>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+            color: #343a40;
+        }
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* 入力内容を左寄せに変更 */
+        }
+
+        .container p {
+            margin: 10px 0; /* 各入力項目の間隔を調整 */
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-container form {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>武将情報確認画面</h1>
+    <div class="container">
+        <h2>入力内容</h2> <!-- 入力内容の見出しを追加 -->
+        <p><strong>名前:</strong> <span th:text="${form.name}"></span></p>
+        <p><strong>年齢:</strong> <span th:text="${form.age}"></span></p>
+        <p><strong>住所:</strong> <span th:text="${form.address}"></span></p>
+		<h2>以上になります!!</h2>
+    </div>
+
+    <div class="form-container">
+        <form action="#" method="get" th:action="@{/busyo_input}">
+            <input type="hidden" name="name" th:value="${form.name}">
+            <input type="hidden" name="age" th:value="${form.age}">
+            <input type="hidden" name="address" th:value="${form.address}">
+            <input type="submit" value="武将登録画面に戻る">
+        </form>
+        <form action="#" method="get" th:action="@{/complete}">
+            <input type="hidden" name="name" th:value="${form.name}">
+            <input type="hidden" name="age" th:value="${form.age}">
+            <input type="hidden" name="address" th:value="${form.address}">
+            <input type="submit" value="武将情報登録完了画面へ進む">
+        </form>
+    </div>
+</body>
+</html>

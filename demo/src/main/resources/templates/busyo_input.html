@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>武将登録画面</title>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #343a40;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form p {
+            margin-bottom: 10px;
+        }
+
+        form input[type="text"] {
+            width: calc(100% - 6px);
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>武将登録画面</h1>
+    <form action="#" method="get" th:action="@{/confirm}" th:object="${form}">
+        <p>名前: <input type="text" name="name" th:value="*{name}"></p>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">エラー</div>
+        <p>年齢: <input type="text" name="age" th:value="*{age}"></p>
+        <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error">エラー</div>
+        <p>居城: <input type="text" name="address" th:value="*{address}"></p>
+        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error">エラー</div>
+        <input type="submit" value="次へ進む">
+    </form>
+</body>
+</html>

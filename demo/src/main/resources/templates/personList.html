@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<style>
+	table {
+	    width: 80%;
+	    margin: 20px auto;
+	    border-collapse: collapse;
+	    text-align: left;
+	}
+	
+	thead {
+	    background-color: #f2f2f2;
+	}
+	
+	th, td {
+	    padding: 8px;
+	    border: 1px solid #ddd;
+	}
+	
+	tr:nth-child(even) {
+	    background-color: #f9f9f9;
+	}
+</style>
+
+<body>
+	
+	<table>
+	 	<tbody>
+	        <tr th:each="person : ${persons}">
+	        	<td th:text="${person.name}">Name</td>
+	            <td th:text="${person.age}">Age</td>
+	            <td th:text="${person.address}">Address</td>
+	  		</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

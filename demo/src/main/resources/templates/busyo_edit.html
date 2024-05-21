@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>編集画面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>武将情報編集画面</h1>
+    <div th:object="${person}">
+        <form method="get" th:action="@{/busyo_edit/exe/{id}(id=${id})}">
+            <p>番号：<span th:text="*{id}"></span>
+                <input type="hidden" name="id" th:value="*{id}">
+            </p>
+            <p>名前：<input type="text" name="name" th:value="*{name}"></p>
+            <p>年齢：<input type="text" name="age" th:value="*{age}"></p>
+            <p>居城地：<input type="text" name="address" th:value="*{address}"></p>
+            <input type="submit" value="送信">
+        </form>
+    </div>
+</body>
+</html>

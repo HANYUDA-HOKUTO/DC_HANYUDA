@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>深海勢のスプリングブートアプリ2</title>
+</head>
+<body>
+		
+<h1 th:text="${greeting}"></h1>
+
+<h1 th:style="'color: ' + ${headerColor}">お前も仲間にならないか??</h1>
+
+<div th:object="${person}">
+	<h1 th:text="'名前は' + *{name} + 'です'"></h1>
+	<h1 th:text="'年齢は' + *{age} + '才です'"></h1>
+</div>
+
+<a th:href="@{/real}">サンプルページへのリンク</a>
+
+</body>
+</html>

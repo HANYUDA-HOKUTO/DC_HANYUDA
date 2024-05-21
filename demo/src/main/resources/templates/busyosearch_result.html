@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>検索結果</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url('battle.jpg') center/cover no-repeat;
+    }
+
+    .container {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    th, td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .back-button {
+        display: block;
+        width: 150px;
+        margin: 10px auto; /* 調整 */
+        padding: 12px;
+        text-align: center;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    .story-button {
+        display: block;
+        width: 40%; /* 調整 */
+        padding: 12px;
+        text-align: center;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .story-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>プロフィール画面</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>年齢</th>
+                <th>居城</th>
+				<th>武将ストーリー</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.id}">id</td>
+                <td th:text="${person.name}">Name</td>
+                <td th:text="${person.age}">Age</td>
+                <td th:text="${person.address}">Address</td>
+                <td>
+                    <form method="post" th:action="@{/busyo_history/{id}(id=${person.id})}">
+                        <button type="submit" class="story-button">武将ストーリー</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="javascript:history.back()" class="back-button">前のページに戻る</a>
+</div>
+</body>
+</html>

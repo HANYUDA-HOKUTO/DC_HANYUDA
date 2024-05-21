@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JPA</title>
+    <meta charset="utf-8" />
+    <style>
+        h1 {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<!--    <h1>JPA(SLECT : 一覧表示)</h1>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--            <tr>-->
+<!--                <th>ID</th>-->
+<!--                <th>名前</th>-->
+<!--                <th>年齢</th>-->
+<!--                <th>住所</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            <tr th:each="person : ${personslist}">-->
+<!--                <td th:text="${person.id}"></td>-->
+<!--                <td th:text="${person.name}"></td>-->
+<!--                <td th:text="${person.age}"></td>-->
+<!--                <td th:text="${person.address}"></td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+    <h1>JPA(INSERT：登録)入力画面</h1>
+    <form action="#" method="get" th:action="@{/confirm}" th:object="${form}">
+        <p>名前: <input type="text" name="name" th:value="*{name}"></p>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">エラー</div>
+		<p>年齢: <input type="text" name="age" th:value="*{age}"></p>
+		<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error">エラー</div>
+		<p>居城: <input type="text" name="address" th:value="*{address}"></p>
+		<div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error">エラー</div>
+        <input type="submit" value="次へ進む">
+    </form>
+</body>
+</html>
