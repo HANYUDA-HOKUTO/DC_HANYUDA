@@ -224,11 +224,27 @@ public class MyController {
 		return "busyo_history";
 	}
 	
-	private String callChatGptApi(Person person) {
-        // Implementation of API call to ChatGPT
-        // Return generated story
-        return "Generated story for " + person.getName();
-    }
+//	private String callChatGptApi(Person person) {
+//        // Implementation of API call to ChatGPT
+//        // Return generated story
+//        return "Generated story for " + person.getName();
+//    }
+	
+	@PostMapping("/busyo_question")
+	public String postbusyo_history(String question, Model model) {
+		
+		ChatGptApiClient client = new ChatGptApiClient();
+		try {
+//			Optional<Person> opt1 = jpadao.findById(id);
+//			Person s1 = opt1.get();
+			String responseMessage = client.questionChatGptApi(question);
+			model.addAttribute("question", responseMessage);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}	
+		return "busyo_question";
+	}
 	
 	@GetMapping("/busyosearch_input")
 	public String busyosearch_input(Model model) {

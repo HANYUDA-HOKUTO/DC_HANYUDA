@@ -122,7 +122,7 @@
 </head>
 <body>
     <!-- BGMの再生 -->
-    <audio id="bgm" src="bgm1.mp3" autoplay loop volume="0.2"></audio>
+    <audio id="bgm" src="bgm1.mp3" autoplay loop volume="0.1"></audio>
     
     <div class="container">
         <h1>武将プロフィール検索</h1>
@@ -140,8 +140,8 @@
         <h1 th:text="${title}">入力してください!!</h1>
         
         <!-- 検索欄 -->
-        <form method="get" th:action="@{/busyosearch_result}">
-            <p>キーワード：<input type="text" name="keyword"></p>
+        <form method="post" th:action="@{/busyo_question}">
+            <p>キーワード：<input type="text" name="question"></p>
             <input type="submit" value="検索">
         </form>
     </div>
@@ -157,7 +157,7 @@
             <path fill="#FFFFFF" d="M3 3h18v2h-18v-2zm5.938 5.375l-1.406-1.406-2.531 2.531h-1.594v2h2.625l2.531 2.531-1.438 1.438c-.406.375-.938.594-1.531.594-.484 0-.922-.172-1.281-.531-.359-.375-.562-.859-.562-1.406v-5.625c0-.547.203-1.031.562-1.406.359-.359.797-.531 1.281-.531.593 0 1.125.219 1.531.594zm8.062 3.625c-.797 0-1.453-.328-1.969-.844l-1.438-1.438v5.625c0 .547-.203 1.031-.562 1.406-.359.359-.797.531-1.281.531-.484 0-.922-.172-1.281-.531-.359-.375-.562-.859-.562-1.406v-5.625c0-.547.203-1.031.562-1.406.359-.359.797-.531 1.281-.531.593 0 1.125.219 1.531.594l1.438 1.438c.516.516.844 1.172.844 1.969s-.328 1.453-.844 1.969z"/>
         </svg>
         <!-- 音量コントロール -->
-        <input type="range" min="0" max="1" step="0.1" value="0.2" oninput="changeVolume(this.value)">
+        <input type="range" min="0" max="1" step="0.1" value="0.1" oninput="changeVolume(this.value)">
     </div>
     
     <script>
@@ -172,4 +172,3 @@
     </script>
 </body>
 </html>
-
