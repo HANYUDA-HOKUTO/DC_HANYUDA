@@ -94,7 +94,7 @@ public class ChatGptApiClient {
     
     public String castleChatGptApi(String castle) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        String prompt = "この"+castle+"は誰の城ですか。又どこにありますか。";
+        String prompt = "この"+castle+"は誰の城ですか。又現在における住所どこになりますか。";
         JSONArray messages = new JSONArray();
         messages.put(new JSONObject().put("role", "system").put("content", "You are a helpful assistant."));
         messages.put(new JSONObject().put("role", "user").put("content", prompt));
