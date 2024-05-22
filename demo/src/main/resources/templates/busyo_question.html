@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column; /* ボタンを中央に配置するために列方向に設定 */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -24,7 +24,7 @@
             color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* transitionをまとめる */
             cursor: pointer;
             margin-bottom: 20px;
         }
@@ -39,19 +39,23 @@
             padding: 10px 20px;
             border: 2px solid #007bff;
             border-radius: 5px;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* transitionをまとめる */
             background-color: #007bff;
         }
         .back-button:hover {
             background-color: #0056b3;
             border-color: #0056b3;
         }
+        .back-button-container {
+            margin-top: 20px; /* ボタンの上部に余白を追加するクラスを追加 */
+            text-align: center; /* ボタンを中央に配置するために追加 */
+        }
     </style>
 </head>
 <body>
     <h1 th:text="${question}">Welcome to My Cool Page</h1>
-    <div style="margin-top: 20px;"> <!-- ボタンの上部に余白を追加 -->
-        <p style="text-align: center;"><a href="/busyosearch_input" class="back-button">ホームページへ</a></p>
+    <div class="back-button-container"> <!-- ボタンの上部に余白を追加 -->
+        <p><a href="/busyosearch_input" class="back-button">ホームページへ</a></p>
     </div>
 </body>
 </html>
