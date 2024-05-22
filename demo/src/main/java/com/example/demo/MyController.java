@@ -246,6 +246,11 @@ public class MyController {
 		return "busyo_question";
 	}
 	
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
 	@GetMapping("/busyosearch_input")
 	public String busyosearch_input(Model model) {
 		model.addAttribute("title", "キーワードを入力してね!!");
