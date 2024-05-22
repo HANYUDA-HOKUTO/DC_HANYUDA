@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cool Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* transitionをまとめる */
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        h1:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* transitionをまとめる */
+            background-color: #007bff;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .back-button-container {
+            margin-top: 20px; /* ボタンの上部に余白を追加するクラスを追加 */
+            text-align: center; /* ボタンを中央に配置するために追加 */
+        }
+    </style>
+</head>
+<body>
+    <h1 th:text="${castle}">Welcome to My Cool Page</h1>
+    <div class="back-button-container"> <!-- ボタンの上部に余白を追加 -->
+        <p><a href="/busyosearch_input" class="back-button">ホームページへ</a></p>
+    </div>
+</body>
+</html>

@@ -246,6 +246,22 @@ public class MyController {
 		return "busyo_question";
 	}
 	
+	@PostMapping("/busyo_castle")
+	public String postbusyo_castle(String castle, Model model) {
+		
+		ChatGptApiClient client = new ChatGptApiClient();
+		try {
+//			Optional<Person> opt1 = jpadao.findById(id);
+//			Person s1 = opt1.get();
+			String responseMessage = client.castleChatGptApi(castle);
+			model.addAttribute("castle", responseMessage);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}	
+		return "busyo_castle";
+	}
+	
 	@GetMapping("/login")
 	public String login(Model model) {
 		return "login";

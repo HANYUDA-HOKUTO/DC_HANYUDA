@@ -24,6 +24,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
   	runtimeOnly 'com.mysql:mysql-connector-j'
   	implementation 'org.json:json:20210307'
 }

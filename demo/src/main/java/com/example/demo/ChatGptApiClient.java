@@ -60,7 +60,41 @@ public class ChatGptApiClient {
     
     public String questionChatGptApi(String keyword) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        String prompt = keyword;
+        String prompt = keyword+"は生前何をやりましたか。";
+        JSONArray messages = new JSONArray();
+        messages.put(new JSONObject().put("role", "system").put("content", "You are a helpful assistant."));
+        messages.put(new JSONObject().put("role", "user").put("content", prompt));
+
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("model", "gpt-3.5-turbo");
+        requestBody.put("messages", messages);
+        requestBody.put("temperature", 1.0);
+        requestBody.put("max_tokens", 1024);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(ChatGptApiConst.API_URL))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + ChatGptApiConst.API_KEY)
+                .POST(BodyPublishers.ofString(requestBody.toString(), StandardCharsets.UTF_8))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            JSONObject jsonResponse = new JSONObject(response.body());
+            return jsonResponse
+                    .getJSONArray("choices")
+                    .getJSONObject(0)
+                    .getJSONObject("message")
+                    .getString("content");
+        } else {
+            throw new RuntimeException("Failed to call ChatGPT API: " + response.body());
+        }
+    }
+    
+    public String castleChatGptApi(String castle) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        String prompt = "この"+castle+"は誰の城ですか。又どこにありますか。";
         JSONArray messages = new JSONArray();
         messages.put(new JSONObject().put("role", "system").put("content", "You are a helpful assistant."));
         messages.put(new JSONObject().put("role", "user").put("content", prompt));
